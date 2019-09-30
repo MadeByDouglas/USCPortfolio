@@ -1,0 +1,106 @@
+<html>
+
+<head>
+  <title>jQuery Practice</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  		$("p").click(function(){
+    		$(this).hide();
+ 		 });
+		});
+  </script>
+  
+  <script>
+		$(document).ready(function(){
+
+$('#thumbs img').click(function(){
+    $('#largeImage').attr('src',$(this).attr('src').replace('thumb','large'));
+    $('#description').html($(this).attr('alt'));
+});
+});
+
+  
+</script>
+  
+  <!-- <script>
+$(function(){
+$['#thumbnails img'].click[function[]{
+$['#mainImg img').attr('src, $(this).attr('src')};
+$['#mainImg img').attr('alt, $(this).attr('alt')};
+    
+$['#imgCaption').attr('src, $(this).attr('alt')};
+                           
+$['#thumbnails img').css('border-color', 'transparent')};
+$(this).css('border-color', '#F00');
+
+$('#thumnails img').css("opacity", "0.6");
+$(this).css('opacity', '1.0');
+	
+}
+})
+</script> -->
+  
+  <style>
+    #thumbs { padding-top: 10px; overflow: hidden; }
+		#thumbs img, #largeImage {
+       border: 1px solid gray;
+       padding: 4px;
+       background-color: white;
+       cursor: pointer;
+    }
+    #thumbs img {
+       float: left;
+       margin-right: 6px;
+    }
+    #description {
+       background: black;
+       color: white;
+       position: absolute;
+       bottom: 0;
+       padding: 10px 20px;
+       width: 525px;
+       margin: 5px;
+    }
+    #panel {
+        position: relative;
+    }
+    
+  </style>
+  
+  
+</head>
+
+<body>
+	
+	<p>This is my first paragraph. This is another sentence.</p>
+
+	<p id="secondparagraph">This is my second paragraph. This is another sentence.</p>
+
+	<p id="thirdparagraph">This is my third paragraph. This is another sentence.</p>
+  
+   <div id="gallery">
+  <div id="panel">
+    <img id="largeImage" src="http://robgolbeck.com/demos/image-swap/image_01_large.jpg" />
+  </div>
+  <div id="thumbs">
+        <img src="http://robgolbeck.com/demos/image-swap/image_01_thumb.jpg" alt="1st image description" />
+        <img src="http://robgolbeck.com/demos/image-swap/image_02_thumb.jpg" alt="2nd image description" />
+        <img src="http://robgolbeck.com/demos/image-swap/image_03_thumb.jpg" alt="3rd image description" />
+        <img src="http://robgolbeck.com/demos/image-swap/image_04_thumb.jpg" alt="4th image description" />
+        <img src="http://robgolbeck.com/demos/image-swap/image_05_thumb.jpg" alt="5th image description" />
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- https://codepen.io/robgolbeck/pen/bVGmop -->
+
+
+
