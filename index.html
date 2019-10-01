@@ -10,17 +10,104 @@
 
       p {font-size: 54pt; color:black}
 		
-	a {font-size: 32pt; color:purple}
+      a {font-size: 32pt; color:purple}
+
+      button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+
+      .loader {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+      }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 		
     </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script>
+    $(document).ready(function() {
+
+      const swapiURL = "https://swapi.co/api/";
+      $(".loader").hide();
+
+      $("button").click(function() {
+
+        var randomPerson = Math.floor((Math.random() * 10) + 1);
+        var url = swapiURL + "people/" + randomPerson + "/"
+    		$(".loader").show();
+
+
+        $.getJSON(url, function(data, status) {
+
+          $(".loader").hide();
+
+          if (status == 'success') {
+
+          console.log(data);
+          var string = JSON.stringify(data);
+
+          var name = data["name"]
+          
+          Swal.fire({
+              type: 'success',
+              title: name,
+              text: string,
+              imageURL: 'darth.jpg',
+              imageHeight: 500,
+              imageAlt: "Darth Vader"
+            })
+
+          } else {
+
+            Swal.fire({
+              type: 'error',
+              title: 'Oh no something went wrong',
+              text: 'the force is not with you'
+            })
+          }
+          
+
+        });
+      })
+    })
+ </script>
 
   </head>
   
   <body>
 
+      <div class="loader"></div>
+
+
       <div class="topheading">API Server Example Lab 4
 
+
         <p>Star Wars API </p>
+
+        <button>Get Star Wars Person</button>
+
+
         <ul>
           <li>Star Wars API is used to organize and share all kinds of information from all star wars movies.
           </li>
@@ -39,6 +126,7 @@
           </li>
           <li> <q>The API contains probably all the Star Wars data you've ever wanted: Planets, spaceships, vehicles, people, films and species from all seven Star Wars films.</q> <a href="https://graphcms.com/blog/the-star-wars-api-just-got-a-makeover/">the-star-wars-api-just-got-a-makeover</a>
           </li>
+          <img src="darth.jpg" alt="darth vader">
         </ul>
 
       </div>
